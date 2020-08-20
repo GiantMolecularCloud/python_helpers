@@ -9,13 +9,14 @@ from .mkpath import mkpath
 from .print_overwrite import print_overwrite
 from .round_significant import round_significant
 from .spectralcube_rms import spectralcube_rms
-from .angle_conversion import angle_conversion
+from .angle_conversion import angle_to_parsec
+from .angle_conversion import parsec_to_angle
 from .coordinate_to_pixel import coordinate_to_pixel
-from .escape_filenames import escape_filenames
+from .escape_filename import escape_filename
 from .get_axis_info import get_axis_info
 from .get_pixel_locations import get_pixel_locations
 from .label_line import label_line
-from .linear_ovesample_list import linear_ovesample_list
+from .linear_oversample_list import linear_oversample_list
 from .mkdir import mkdir
 from .multilist_progressbar import multilist_progressbar
 from .rms import rms
