@@ -19,6 +19,7 @@ def spectralcube_rms(cube, lfchans):
         2D map of the RMS values.
     """
 
+    import numpy as np
     from spectral_cube.lower_dimensional_structures import Projection
     from spectral_cube import SpectralCube,wcs_utils
     from spectral_cube.spectral_cube import np2wcs
