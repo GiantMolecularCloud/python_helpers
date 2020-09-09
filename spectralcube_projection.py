@@ -37,7 +37,7 @@ def spectralcube_projection(fitsimage, hdu=0):
         return Projection(image.data, wcs=wcs, header=image.header, beam=beam)
     else:
         print("Could not find a beam.")
-        return Projection(image.data, wcs=wcs, header=image.header)
+        return Projection(image.data*u.Quantity(image.header['bunit']), wcs=wcs, header=image.header)
 
 
 ####################################################################################################
