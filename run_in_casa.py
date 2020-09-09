@@ -37,6 +37,7 @@ try:
         Please understand this as a poor workaround until CASA 6.0 will run natively in Python3.
         """
 
+        import os
         import numpy as np
         import subprocess
         import shlex
