@@ -19,9 +19,8 @@ def spectralcube_rms(cube, lfchans):
         2D map of the RMS values.
     """
 
-    import SpectralCube
     from spectral_cube.lower_dimensional_structures import Projection
-    from spectral_cube import wcs_utils
+    from spectral_cube import SpectralCube,wcs_utils
     from spectral_cube.spectral_cube import np2wcs
 
     if not isinstance(cube, SpectralCube):
