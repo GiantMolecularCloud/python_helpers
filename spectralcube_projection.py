@@ -19,6 +19,7 @@ def spectralcube_projection(fitsimage, hdu=0):
 
     from astropy.io import fits
     from astropy.wcs import WCS
+    from astropy import units as u
     from spectral_cube.lower_dimensional_structures import Projection
 
     image = fits.open(fitsimage)[hdu]
