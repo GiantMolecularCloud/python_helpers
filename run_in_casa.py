@@ -2,8 +2,10 @@
 # execute code in casa
 ####################################################################################################
 
+# This is wrapped in another try/except because it can easily fail in some old casa versions.
+
 try:
-    def run_in_casa(command, keep_cmd_file=False, logfile='casa', interactive=False, pipeline=False, casapath='casa'):
+    def run_in_casa(command, cwd=None, keep_cmd_file=False, logfile='casa', interactive=False, pipeline=False, casapath='casa'):
         """Execute CASA commands from within Python.
         Uses the subprocess modul to run CASA in blocking mode. An option to have it run in the background
         will be added in future.
@@ -13,6 +15,10 @@ try:
         command : str/fstring
             The command(s) to run. Must be a triple quoted string if you want to run multiline
             commands. fstrings can be used to pass parameters from Python to CASA.
+        cwd : str
+            The directory in which casa is executed. This can be important to set because CASA writes temporary
+            images to its current directory. The default is the currect directory, i.e. the directory python
+            is in which might not be the directory you want to run casa in.
         keep_cmd_file : bool
             Default: False
             Keep the temporary file that contains the commands to execute.
@@ -57,7 +63,7 @@ try:
 
         # run casa
         print("\nExecuting CASA:\n\t\x1b[0;31;40m"+casa_command+"\x1b[0m")
-        subprocess.call(shlex.split(casa_command))
+        subprocess.call(shlex.split(casa_command), cwd=cwd)
 
         # keep cmd file?
         if not keep_cmd_file:
