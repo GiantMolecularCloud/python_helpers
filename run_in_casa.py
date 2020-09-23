@@ -50,7 +50,7 @@ try:
 
         np.random.seed(None)    # force random numbers if this is called in parallel with a set seed
         commandfile = 'casa_cmd.'+str(int(np.random.rand()*1e4))+'.py'
-        with open(commandfile, 'w') as f:
+        with open(os.path.join(os.getcwd(),commandfile), 'w') as f:
             f.write(command)
 
         # command to execute
