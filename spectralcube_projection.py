@@ -37,7 +37,7 @@ def spectralcube_projection(fitsimage, hdu=0):
             except:
                 print("Failed to parse bunit. Specify manually.")
     else:
-        bunit = None
+        bunit = False
 
     if bunit:
         data = image.data*bunit
