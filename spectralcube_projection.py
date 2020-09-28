@@ -28,6 +28,7 @@ def spectralcube_projection(fitsimage, hdu=0):
     if image.header['naxis'] != 2:
         raise TypeError("Image does not have two axes: naxis="+str(image.header['naxis']))
 
+    bunit = False
     if 'bunit' in image.header:
         if image.header['bunit'] == 'beam-1 Jy':
             bunit = u.Jy/u.beam
@@ -36,8 +37,6 @@ def spectralcube_projection(fitsimage, hdu=0):
                 bunit = u.Quantity(image.header['bunit'])
             except:
                 print("Failed to parse bunit. Specify manually.")
-    else:
-        bunit = False
 
     if bunit:
         data = image.data*bunit
