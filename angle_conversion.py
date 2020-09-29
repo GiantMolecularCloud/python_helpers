@@ -21,6 +21,8 @@ def angle_to_parsec(angle, source=None, distance=None):
         The linear distance corresponding to the given angle.
     """
     import astropy.units as u
+    import numpy as np
+    
     if (source==None) and (distance==None):
         raise Exception("Need to provide either source name or distance.")
 
@@ -53,6 +55,8 @@ def parsec_to_angle(parsec, source=None, distance=None):
         The angle corresponding to the given distance.
     """
     import astropy.units as u
+    import numpy as np
+
     if (source==None) and (distance==None):
         raise Exception("Need to provide either source name or distance.")
 
