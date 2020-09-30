@@ -20,7 +20,9 @@ def cgradient_line(x,y, ax, z=None, cmap='inferno', lw=1, **kwargs):
     **kwargs
         Kwargs passed to LineCollection.
     """
+    import numpy as np
     from matplotlib.collections import LineCollection
+    
     points = np.array([x, y]).T.reshape(-1, 1, 2)
     segments = np.concatenate([points[:-1], points[1:]], axis=1)
     lc = LineCollection(segments, cmap=cmap, linewidths=lw, **kwargs)

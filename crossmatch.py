@@ -18,6 +18,8 @@ def crossmatch(*args):
         also the corresponding element of the other list.
 
     """
+    import numpy as np
+    
     lists = []
     for list in args:
         lists.append( np.array(list) )

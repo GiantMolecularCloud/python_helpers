@@ -22,6 +22,7 @@ def get_pixel_locations(fitsimage, axis):
 
     import astropy.units as u
     from astropy.io import fits
+    import numpy as np
 
     if isinstance(fitsimage, str):
         header = fits.getheader(fitsimage)

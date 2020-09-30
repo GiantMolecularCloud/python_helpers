@@ -25,6 +25,7 @@ def coordinate_to_pixel(fitsimage, axis, coordinates, precision=2):
 
     """
 
+    import numpy as np
     import astropy.units as u
     from astropy.io import fits
 

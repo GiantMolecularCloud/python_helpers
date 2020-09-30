@@ -28,6 +28,8 @@ def label_line(ax,line,x,y,label,angle=0.,**text_kwargs):
     mpl.Text
         Mpl text object.
     """
+    import numpy as np
+    
     if type(line)==list:
         print("Got list of lines. Using first line in the list.")
         line = line[0]

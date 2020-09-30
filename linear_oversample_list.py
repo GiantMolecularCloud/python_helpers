@@ -20,6 +20,8 @@ def linear_oversample_list(alist, factor=2):
         Oversampled list.
 
     """
+    import numpy as np
+    
     newlist = []
     for i1,i2 in zip(alist[:-1],alist[1:]):
         newlist.append(i1)
