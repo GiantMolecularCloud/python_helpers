@@ -26,17 +26,17 @@ def reproject_image(image, template, outfile='auto', overwrite=True):
     print("This can take several minutes for large cubes.")
 
     # load files
-    image    = fits.open(image)[0]
-    template = fits.open(template)[0]
+    im_HDU   = fits.open(image)[0]
+    temp_HDU = fits.open(template)[0]
 
     # reproject
-    array, footprint = reproject_interp(image, template.header)
+    array, footprint = reproject_interp(im_HDU, temp_HDU.header)
 
     # save to disk
     if outfile == 'auto':
         outfile = image.replace('.fits','.reprojected.fits')
     fits.writeto(outfile,
-             data      = reprojected,
-             header    = template.header,
+             data      = array,
+             header    = temp_HDU.header,
              overwrite = overwrite
             )
