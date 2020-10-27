@@ -33,17 +33,21 @@ def reproject_image(image, template, outfile='auto', overwrite=True):
     # reproject
     array, footprint = reproject_interp(im_HDU, temp_HDU.header)
 
-    # keep some info of original image
-    for n in np.arange(1,im_HDU.header['naxis']+1):
-        n = str(n)
-        for x in ['cdelt','crval','crpix','cunit']:
-            im_HDU.header[x+n] = temp_HDU.header[x+n]
+    # # keep some info of original image
+    # for n in np.arange(1,im_HDU.header['naxis']+1):
+    #     n = str(n)
+    #     for x in ['cdelt','crval','crpix','cunit']:
+    #         im_HDU.header[x+n] = temp_HDU.header[x+n]
+
+    # got the other way: use the template header and carry over the bunit
+    temp_HDU.header['bunit'] = im_HDU.header['bunit']
+    print("Assigned the template header to the regridded image. Some header information may be lost. Check the original file.")
 
     # save to disk
     if outfile == 'auto':
         outfile = image.replace('.fits','.reprojected.fits')
     fits.writeto(outfile,
              data      = array,
-             header    = im_HDU.header,
+             header    = temp_HDU.header,
              overwrite = overwrite
             )
