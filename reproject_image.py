@@ -44,6 +44,6 @@ def reproject_image(image, template, outfile='auto', overwrite=True):
         outfile = image.replace('.fits','.reprojected.fits')
     fits.writeto(outfile,
              data      = array,
-             header    = temp_HDU.header,
+             header    = im_HDU.header,
              overwrite = overwrite
             )
