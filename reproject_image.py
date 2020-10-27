@@ -19,6 +19,7 @@ def reproject_image(image, template, outfile='auto', overwrite=True):
         Default: True
     """
 
+    import numpy as np
     from astropy.io import fits
     from reproject import reproject_interp
 
@@ -31,6 +32,12 @@ def reproject_image(image, template, outfile='auto', overwrite=True):
 
     # reproject
     array, footprint = reproject_interp(im_HDU, temp_HDU.header)
+
+    # keep some info of original image
+    for n in np.arange(im_HDU['naxis']):
+        n = str(n)
+        for x in ['cdelt','crval','crpix','cunit']:
+            im_HDU.header[x+n] = temp_HDU.header[x+n]
 
     # save to disk
     if outfile == 'auto':
