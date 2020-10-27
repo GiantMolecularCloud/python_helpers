@@ -30,7 +30,7 @@ def reproject_image(image, template, outfile='auto', overwrite=True):
     template = fits.open(template)[0]
 
     # reproject
-    array, footprint = reproject_interp(HI, CO.header)
+    array, footprint = reproject_interp(image, template.header)
 
     # save to disk
     if outfile == 'auto':
