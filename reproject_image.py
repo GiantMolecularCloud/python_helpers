@@ -22,13 +22,14 @@ def reproject_image(image, template, outfile='auto', overwrite=True):
     from astropy.io import fits
     from reproject import reproject_interp
 
+    print("Reprojecting "+image+" onto "+template)
+    print("This can take several minutes for large cubes.")
+
     # load files
     image    = fits.open(image)[0]
     template = fits.open(template)[0]
 
     # reproject
-    print("Reprojecting "+image+" onto "+template)
-    print("This can take several minutes for large cubes.")
     array, footprint = reproject_interp(HI, CO.header)
 
     # save to disk
