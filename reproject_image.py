@@ -34,7 +34,7 @@ def reproject_image(image, template, outfile='auto', overwrite=True):
     array, footprint = reproject_interp(im_HDU, temp_HDU.header)
 
     # keep some info of original image
-    for n in np.arange(im_HDU['naxis']):
+    for n in np.arange(im_HDU.header['naxis']):
         n = str(n)
         for x in ['cdelt','crval','crpix','cunit']:
             im_HDU.header[x+n] = temp_HDU.header[x+n]
