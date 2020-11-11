@@ -30,7 +30,7 @@ def spectralcube_rms(cube, lfchans):
         raise TypeError("lfchans must be a list of channels.")
 
     # rms noise values
-    rms = np.sqrt(np.mean(np.square(cube.filled_data[lfchans]), axis=0))
+    rms = np.sqrt(np.nanmean(np.square(cube.filled_data[lfchans]), axis=0))
 
     # wcs with dropped spectral axis
     new_wcs = wcs_utils.drop_axis(cube._wcs, np2wcs[0])
