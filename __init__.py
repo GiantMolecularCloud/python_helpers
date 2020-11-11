@@ -23,3 +23,4 @@ from .rms import rms
 from .run_in_casa import run_in_casa
 from .spectralcube_projection import spectralcube_projection
 from .reproject_image import reproject_image
+from .texify_str import texify_str
